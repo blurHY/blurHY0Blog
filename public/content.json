@@ -1,0 +1,25 @@
+{
+  "address": "12q9YNb5oJ331nTjUxWefV9W2EXpMu8RWi",
+  "background-color": "#FFFFFF",
+  "description": "blurHY's blog",
+  "favicon": "favicon.ico",
+  "domain": "blurhy.bit",
+  "files": {},
+  "inner_path": "content.json",
+  "modified": 1543670399,
+  "postmessage_nonce_security": true,
+  "signs": {},
+  "signs_required": 1,
+  "title": "blurHY - Blog",
+  "translate": ["js/all.js"],
+  "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no",
+  "optional": ".*[.]js[.]map",
+  "ignore": "(data/.*db|data/users/.*)",
+  "includes": {
+    "data/users/content.json": {
+      "signers": [],
+      "signers_required": 1
+    }
+  },
+  "zeronet_version": "0.6.4"
+}
