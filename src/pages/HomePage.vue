@@ -39,8 +39,8 @@
 <script>
 import hdate from "human-date";
 import marked from "marked";
-import hljs from 'highlight.js/lib/highlight';
-import 'highlight.js/styles/github.css'
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
 
 var renderer = new marked.Renderer();
 
@@ -89,12 +89,10 @@ export default {
 			return hdate.relativeTime(new Date(date * 1000));
 		},
 		get_post_preview(content) {
-			let part = "";
-			try {
-				part = content.split("\n---")[0];
-			} catch {
-				part = content.substr(0, 100);
-			}
+			let part = content.split("\n---\n");
+			if (part.length > 1) part = part[0];
+			else part = content.substr(0, 100);
+
 			marked.setOptions({
 				renderer,
 				highlight(code) {
