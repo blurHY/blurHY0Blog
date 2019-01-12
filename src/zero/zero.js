@@ -39,4 +39,10 @@ SELECT comment_id,body,date_added,replace(json.directory,"users/","") as userpub
     console.log(comments)
     return comments
   }
+  async addComment(post_id) {
+
+  }
+  async modifyJson(inner_path) {
+
+  }
 }

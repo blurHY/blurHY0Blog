@@ -3,12 +3,9 @@ export default function monkeyPatch(router, zeroframe) {
 
   // We only send the path after /? to vue-router. The set base path is ignored.
   function getLocation(loc = window.location) {
-    // Ignore ? prefix that gets set by ZeroFrame's wrapperPushState
-    return (loc.search.slice(1)
-      // Ignore wrapper and wrapper_nonce params set by ZeroFrame's iframe
-      .replace(/[&?]wrapper=False/, "")
-      .replace(/[&?]wrapper_nonce=[A-Za-z0-9]+/, "") ||
-      '/') + loc.hash
+    let ret = (loc.search.slice(1).replace(/[&?]wrapper=False/, "").replace(/[&?]?wrapper_nonce=[A-Za-z0-9]+/, "") || '/') + loc.hash
+    console.log(ret)
+    return ret
   }
 
   // Subscribe to history change events
@@ -58,7 +55,7 @@ export default function monkeyPatch(router, zeroframe) {
     }, onAbort)
   }
   // We only send the path after /? to vue-router. The set base path is ignored.
-  router.history.getCurrentLocation = () => getLocation()
+  router.history.getCurrentLocation = getLocation
 
   router.history.go = n => console.exception("[vue-zeronet] router.history.go not implemented")
 }

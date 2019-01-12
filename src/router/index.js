@@ -10,8 +10,7 @@ Vue.use(Router);
 
 export default new Router({
 	mode: "hash",
-	routes: [
-		{
+	routes: [{
 			path: "/",
 			name: "HomePage",
 			component: HomePage,
