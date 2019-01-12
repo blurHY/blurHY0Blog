@@ -110,7 +110,6 @@ class ZeroFrame {
 class ZeroFakeXMLHttpRequest {
   open(method, path) {
     this.path = path
-    this.zero_frame = ZeroFakeXMLHttpRequest.zero_frame
   }
 
   onResult(res) {
@@ -136,8 +135,7 @@ class ZeroFakeXMLHttpRequest {
   }
 
   send() {
-    this.zero_frame.cmd("fileGet", this.path, (res) => this.onResult(res))
-
+    window.zframe.cmd("fileGet", this.path, (res) => this.onResult(res))
   }
 }
 

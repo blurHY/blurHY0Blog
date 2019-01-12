@@ -1,6 +1,6 @@
 {
-  "db_name": "ZeroBlog",
-  "db_file": "data/zeroblog.db",
+  "db_name": "blurHYBlogDB",
+  "db_file": "data/blurhyblog.db",
   "version": 2,
   "maps": {
     ".+/data.json": {

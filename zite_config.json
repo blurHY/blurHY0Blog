@@ -1,5 +1,5 @@
 {
   "siteAddr": "12q9YNb5oJ331nTjUxWefV9W2EXpMu8RWi",
   "zeronetPath": "D:\\ZeroNet\\",
-  "virtualEnvActivateScript": ".\\venv\\Scripts\\activate.bat"
+  "zeronetAddr": "127.0.0.1:43110"
 }

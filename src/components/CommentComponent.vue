@@ -1,27 +1,45 @@
 <template>
-    <div class="media mt-4">
-    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+  <div class="media mt-4">
+    <div class="d-flex mr-3" v-html="avatar"></div>
     <div class="media-body">
-        <h5 class="mt-0">Commenter Name</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          <slot name="nested-component"/>
+      <h5 class="mt-0">{{username}}</h5>
+      <div v-html="marked(body)"></div>
+      <slot name="nested-component"/>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
-export default {
-    props: {
+let jdenticon = require("jdenticon");
+import marked from "marked";
+import hdate from "human-date";
 
-    },
-    data() {
-        return {
-            
-        }
+let renderer = new marked.Renderer();
+
+export default {
+  props: ["body", "date_added", "userpub", "username"],
+  data() {
+    return {};
+  },
+  computed: {
+    avatar() {
+      return jdenticon.toSvg(this.userpub, 80);
     }
-}
+  },
+  methods: {
+    marked() {
+      marked.setOptions({
+        renderer: renderer,
+        highlight(code) {
+          return hljs.highlightAuto(code).value;
+        },
+        sanitize: true
+      });
+      return marked.apply(this, arguments);
+    }
+  }
+};
 </script>
 
 <style>
-
 </style>
